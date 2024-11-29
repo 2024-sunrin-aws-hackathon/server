@@ -29,6 +29,16 @@ def get_news_from_ytn(keyword):
     
     return news_list
 
+def get_news_from_kbs(keyword):
+    url = "https://news.kbs.co.kr/news/pc/search/search.do?query="+keyword+"&sortType=score"
+
+    news_list = []
+
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    news_url_list = [link.get('href') for link in soup.find("ul", class_="list-type
+
 def get_all_news(keyword):
     news_list = []
     news_list.append({
