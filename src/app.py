@@ -25,7 +25,7 @@ def lambda_handler(event, context):
             {
                 "version": "2.0",
                 "useCallback": True,
-                "data": {"text": "답변 생성 중입니다. 잠시 기다려주세요."},
+                "data": {"text": "claude-o1 모델이 생각중입니다, 잠시 기다려주세요."},
             }
         ),
     }
