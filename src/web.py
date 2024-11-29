@@ -37,7 +37,7 @@ def get_news_from_kbs(keyword):
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
 
-    news_url_list = [link.get('href') for link in soup.find("ul", class_="list-type
+    news_url_list = [link.get('href') for link in soup.find("ul", class_="list-type").select("li a")]
 
 def get_all_news(keyword):
     news_list = []
