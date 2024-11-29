@@ -1,15 +1,4 @@
 import requests
-import beautifulsoup4
-
-def get_news():
-    
-def get_news_from_mbc(keyword):
-    url = "https://www.ytn.co.kr/search/index.php?q="+keyword
-
-    response = requests.get(url)
-    soup = BeautifulSoup(response.text, "html.parser")
-    
-aimport requests
 from bs4 import BeautifulSoup    
 
 def get_news_from_ytn(keyword):
@@ -46,5 +35,3 @@ def get_all_news(keyword):
         "ytn": get_news_from_ytn(keyword)
     })
     return news_list
-
-
