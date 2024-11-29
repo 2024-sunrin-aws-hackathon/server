@@ -37,7 +37,26 @@ def get_news_from_kbs(keyword):
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
 
-    news_url_list = [link.get('href') for link in soup.find("ul", class_="list-type").select("li a")]
+    news_url_list = [link.get('href') for link in soup.find("div", class_="box-contents").select("div a")]
+
+    for i in range(5):
+        news_url = news_url_list[i]
+        response = requests.get(news_url)
+        soup = BeautifulSoup(response.text, "html.parser")
+        title = soup.find("h4", class_="headline-title").text
+        content = soup.find("div", class_="detail-body font-size").text.strip().replace("\n","").replace("\t","").replace("\r","")
+
+        if not content or len(content) > 2000:
+            pass
+        else:
+            news_list.append({
+                "url": news_url,
+                "title": title,
+                "content": content
+            })
+
+    return news_list
+
 
 def get_all_news(keyword):
     news_list = []
